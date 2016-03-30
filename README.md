@@ -78,7 +78,7 @@ Replace the image with your existing one from the following code or comment it o
 
 The attrChecker.html is located in the "/etc/shibboleth" directory. If you don't want to edit it by yourself, you can use the ready made template. The template has links to external components such as jquery and bootstrap. They are fetched on the fly from third party sources. Basically there are three locations needing modifications:
 
-* The pixel tracking link after the comment "PixelTracking". The Image tag and all required attributes after the variable must be configured here. After "miss=" define all required attributes you updated in shibboleth2.xml using shibboleth tagging. Eg <shibmlpifnot $attribute>-$attribute</shibmlpifnot> (this echoes $attribute if it's not received by shibboleth). This example uses "-" as a delimiter.
+* The pixel tracking link after the comment "PixelTracking". The Image tag and all required attributes after the variable must be configured here. After "miss=" define all required attributes you updated in shibboleth2.xml using shibboleth tagging. Eg `<shibmlpifnot $attribute>-$attribute</shibmlpifnot>` (this echoes $attribute if it's not received by shibboleth). This example uses "-" as a delimiter.
 
 * The table showing missing attributes between the tags "TableStart" and "TableEnd". You have to insert again all the same attributes as above.
 
@@ -91,6 +91,6 @@ The attrChecker.html is located in the "/etc/shibboleth" directory. If you don't
 </tr>
 ```
 
-* The email template between the tags "<textarea>" and "</textarea>". After "The attributes that were not released to the service are:". Again define all required attributes using shibboleth tagging like in section 1 ( eg: <shibmlpifnot $attribute> * $attribute</shibmlpifnot>). Note that for SP identifier target URL is used instead of entityID. There arent yet any tag for SP entityID so you can replace this target URL manually.
+* The email template between the tags `<textarea>` and `</textarea>`. After "The attributes that were not released to the service are:". Again define all required attributes using shibboleth tagging like in section 1 ( eg: `<shibmlpifnot $attribute> * $attribute</shibmlpifnot>`). Note that for SP identifier target URL is used instead of entityID. There arent yet any tag for SP entityID so you can replace this target URL manually.
 
 You can also update attrChecker.html with a Perl-script (attrChecker.pl). The script extracts the required attributes from the Attribute Checker handler element in shibboleth2.xml and modifies attrChecker.html accordingly (Note that script doesnt work with complex scenarios using AND and OR operators, it uses only "attributes" attribute from the handler). If you customize attrChecker.html and execute the Perl-script, make a backup of attrChecker.html before executing attrChecker.pl. If the script doesn't find the tags it needs for replacing content, it might break the template. The script updates the PixelTracking link by replacing shibboleth tags between miss= and following ", attribute table rows between "TableStart" and "TableEnd" and after line "The attributes that were not released to the service are:" until the next empty line.
