@@ -66,7 +66,7 @@ When you modify shibboleth2.xml you can test validity of the configuration file 
 
 Shibboleth SP doesn't track nor log failed logins due to missing attributes. The Shibboleth SP web server can be used for "pixel tracking". This means that you load an image (eg: containing only one transparent pixel) from the web server  from where you can monitor logs and observe access for you image. In the url of your image you can also insert details you want to see, eg: Authentication source (IdP) and missing attributes.
 
-You can uncomment following code from the template and replace image with your existing one, example below loads track.png from document root and adds variables like "idp" containing the entityID of the authentication source and "miss" denoting missing attributes.
+Replace the image with your existing one from the following code or comment it out if you dont need it. Example below loads track.png from document root and adds variables like "idp" containing the entityID of the authentication source and "miss" denoting missing attributes.
 
 ''Pixel tracking''
 
