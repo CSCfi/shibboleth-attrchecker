@@ -1,14 +1,14 @@
-##Shibboleth SP attribute checker
+## Shibboleth SP attribute checker
 
 The list of attributes released by an IdP varies heavily and occasionally required attributes needed by an SP are not released by the user's IdP. This leads to failed logins and the error page doesn't give clear information of the failure reason (eg. what attributes are missing). You can always check the attributes on an application level. The approach described here is done on the Shibboleth SP level (requires Shibboleth 2.5+) and does not require changes to the application using the attibutes.
 
 Shibboleth SP provides a hook for performing attribute checks for required attributes and a attribute extractor for fetching IdP metadata attributes where the login was performed.
 
-###Attribute Checker Handler
+### Attribute Checker Handler
 
 The AttributeChecker validates the user session against attributes specified as a required. If requirements are fulfilled, the login completes otherwise an error page is displayed instead. Note that the required attributes have to be "hard coded" here and kept in sync with the required attributes expressed in the Metadata.
 
-####Configuration
+#### Configuration
 
 Add a sessionHook for attribute checker: sessionHook="/Shibboleth.sso/AttrChecker" to ApplicationDefaults. Also add the metadataAttributePrefix="Meta-" (This will be explained later).
 
@@ -62,7 +62,7 @@ Add the AttributeExtractor element of the type metadata next to the already exis
 
 When you modify shibboleth2.xml you can test validity of the configuration file with command "shibd -t". If configuration file is still valid XML you can now restart your shibboleth with "sudo service shibd restart". Shibboleth should anyways reload configuration file if it detects any change on it.
 
-####Logging
+#### Logging
 
 Shibboleth SP doesn't track nor log failed logins due to missing attributes. The Shibboleth SP web server can be used for "pixel tracking". This means that you load an image (eg: containing only one transparent pixel) from the web server  from where you can monitor logs and observe access for you image. In the url of your image you can also insert details you want to see, eg: Authentication source (IdP) and missing attributes.
 
@@ -74,7 +74,7 @@ Replace the image with your existing one from the following code or comment it o
 <img title="track" src="/track.png?idp=<shibmlp entityID/>&miss=<shibmlpifnot displayName>-displayName</shibmlpifnot><shibmlpifnot givenName>-givenName</shibmlpifnot><shibmlpifnot cn>-cn</shibmlpifnot><shibmlpifnot sn>-sn</shibmlpifnot><shibmlpifnot eduPersonPrinpalName>-eduPersonPrinpalName</shibmlpifnot><shibmlpifnot schacHomeOrganization>-schacHomeOrganization</shibmlpifnot><shibmlpifnot schacHomeOrganizationType>-schacHomeOrganizationType</shibmlpifnot>" alt="" width="1" height="1" />
 ```
 
-####Template customization
+#### Template customization
 
 The attrChecker.html is located in the "/etc/shibboleth" directory. If you don't want to edit it by yourself, you can use the ready made template. The template has links to external components such as jquery and bootstrap. They are fetched on the fly from third party sources. Basically there are three locations needing modifications:
 
