@@ -49,7 +49,7 @@
       	  <br/>
           <div id="details" style="display:none">
 <hr>
-           "The following user information in form of SAML attributes is needed by this service. Required but missing attribute values are marked in red."
+           The following user information in form of SAML attributes is needed by this service. Required but missing attribute values are marked in red.
           <div class="row">
             <div class="col-sm-5">
               <table class="table table-sm">
@@ -125,7 +125,7 @@
 <textarea id="textarea" style="width:100%;height:100px;">
 Dear <shibmlpif Meta-displayName><shibmlp Meta-displayName /></shibmlpif> IdP Administrator
 
-I tried to log in to a service with the entityID "<shibmlp target />" today (<shibmlp now />). Unfortunately, the login failed because the <shibmlpif Meta-displayName><shibmlp Meta-displayName /></shibmlpif> Identity Provider did not release the requested user attributes to this service. To be able to access this service, I kindly ask you to ensure that our Identity Provider releases my user attributes to https://devsp.funet.fi/secure. Please find a summary of the login attempt below.
+I tried to log in to a service with the entityID "<shibmlp target />" today (<shibmlp now />). Unfortunately, the login failed because the <shibmlpif Meta-displayName><shibmlp Meta-displayName /></shibmlpif> Identity Provider did not release the requested user attributes to this service. To be able to access this service, I kindly ask you to ensure that our Identity Provider releases my user attributes to <shibmlp target />. Please find a summary of the login attempt below.
 
 The attributes that were not released to the service are:
  * <shibmlpifnot SHIB_displayName>SHIB_displayName</shibmlpifnot>
@@ -137,7 +137,7 @@ The attributes that were not released to the service are:
  * <shibmlpifnot SHIB_schacHomeOrganizationType>SHIB_schacHomeOrganizationType</shibmlpifnot>
 
 Connection summary:
- * IdP:      <shibmlp entityID/> (<shibmlp Meta-displayName />)
+ * IdP:      <shibmlp entityID/> <shibmlpif Meta-displayName>(<shibmlp Meta-displayName />)</shibmlpif>
  * SP:       <shibmlp target />
  * Time:     <shibmlp now/>
 
